@@ -19,7 +19,8 @@ Approach 2
 -Else, return false
 '''
 
-def valid_anagram(string_1: str, string_2:str):
+# Approach 1
+def valid_anagram_approach_1(string_1: str, string_2:str):
   sorted_string_1 = sorted(string_1)  # ['a', 'a', 'a', 'g', 'm', 'n', 'r']
   sorted_string_2 = sorted(string_2)  # ['a', 'a', 'a', 'g', 'm', 'n', 'r']
   
@@ -33,4 +34,21 @@ def valid_anagram(string_1: str, string_2:str):
       return False
   return True
 
-print(valid_anagram("rat", "car"))
+print(valid_anagram_approach_1("anagram", "nagaram"))
+
+# Approach 2
+def valid_anagram_approach_2(string_1: str, string_2:str):
+  list_string_1 = list(string_1)  # ['a', 'n', 'a', 'g', 'r', 'a', 'm']
+  list_string_2 = list(string_2)  # ['n', 'a', 'g', 'a', 'r', 'a', 'm']
+  
+  for letter_in_string_1 in list_string_1:
+    for letter_in_string_2 in list_string_2:
+      if letter_in_string_1 not in list_string_2:
+        return False
+      if letter_in_string_1 == letter_in_string_2:
+        list_string_2.remove(letter_in_string_1)
+        break  # break out of second for-loop
+    if len(list_string_2) == 0:
+      return True
+
+print(valid_anagram_approach_2("anagram", "nagaram"))
