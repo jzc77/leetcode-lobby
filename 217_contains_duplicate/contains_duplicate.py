@@ -11,7 +11,7 @@ Thought process:
   - If already in the unique list, return true (for containing duplicates in the original list)
 -If end of original list is reached, return false (for not containing duplicates in the original list)
 '''
-def containsDuplicate(nums: list[int]) -> bool:
+def containsDuplicate(nums: List[int]) -> bool:
   unique_list = []
   for element in nums:
     if element not in unique_list:
