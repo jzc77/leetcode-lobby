@@ -37,22 +37,24 @@ Thought process:
 '''
 def two_sum_approach_2(nums: List[int], target: int) -> List[int]:
   nums_difference_dict = {}
-
+  
   for index, num in enumerate(nums):
-    nums_difference_dict[num] = index
     potential_key = target - num
     if potential_key in nums_difference_dict.keys():
+      print(nums_difference_dict)
       return([index, nums_difference_dict[potential_key]])
+    nums_difference_dict[num] = index
 
-    # for every num, look it up in the dict so far
-    # if num in nums_difference_dict.values():
-    #   return [index, ]
-  #print(nums_difference_dict)
+#print(two_sum_approach_2([2,7,11,15], 9))      # should contain [1,0], correct
+print(two_sum_approach_2([3,2,4], 6))           # should contain [1,2]
+#print(two_sum_approach_2([3,3], 6))            # should contain [0,1]
+#print(two_sum_approach_2([3, -10, 2, 19], 9))  # should contain [1,3], correct
 
-#print(two_sum_approach_2([2,7,11,15], 9))
-print(two_sum_approach_2([3,2,4], 6))
-#print(two_sum_approach_2([3,3], 6))
-#$print(two_sum_approach_2([3, -10, 2, 19], 9))
+# dict = {
+#   3: 0,
+#   2: 1,
+#   4: 2
+# }
 
 # dict = {
 #   3: 0,
