@@ -24,7 +24,8 @@ def two_sum(nums: List[int], target: int) -> List[int]:
 
 #two_sum([2,7,11,15], 9)
 #two_sum([3,3], 6)
-two_sum([3, -10, 2, 19], 9)
+# print(two_sum([3, -10, 2, 19], 9))
+print(two_sum([2, 5, 5, 11], 10))  # output=[1,1], but should be [1,2]
 
 '''
 Thought process:
