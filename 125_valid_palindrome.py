@@ -20,14 +20,26 @@ Not needed...:
     -the indices are 1 number away from each other (even number of characters)(then return true, it is a palindrome) or
     -the indices are the same (odd number of characters)(then return true, it is a palindrome)
 '''
+# To run file: python 125_valid_palindrome.py
+# To run doctest: python -m doctest 125_valid_palindrome.py -v
 def isPalindrome(input_string: str) -> bool:
-  alpha_num_string = "".join(char.lower() for char in input_string if char.isalnum())
-  alpha_num_string_reverse = alpha_num_string[::-1]
+    """
+    Given a string, see if it is a palindrome.
 
-  if alpha_num_string == alpha_num_string_reverse:
-    return True
-  else:
-    return False
+    :param: str
+    :return: bool
 
+    >>> isPalindrome("A man, a plan, a canal: Panama")
+    True
+    >>> isPalindrome("race a car")
+    False
+    >>> isPalindrome(" ")
+    True
+    """
+    alpha_num_string = "".join(char.lower() for char in input_string if char.isalnum())
+    alpha_num_string_reverse = alpha_num_string[::-1]
 
-print(isPalindrome("A man, a plan, a canal: Panama"))
+    if alpha_num_string == alpha_num_string_reverse:
+      return True
+    else:
+      return False
