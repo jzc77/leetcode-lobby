@@ -24,3 +24,17 @@ def maxProfit(prices: List[int]) -> int:
     >>> maxProfit("race a car")
     False
     """
+    left, right = 0, 1
+    difference = 0
+
+    while prices[1] < len(prices):
+        if prices[1] - prices[0] < 0:
+            left = right
+            right += 1
+        else:
+            difference = prices[1] - prices[0]
+            right += 1
+
+
+
+
