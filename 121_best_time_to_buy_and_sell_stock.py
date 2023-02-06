@@ -11,7 +11,7 @@ Thought process:
 # To run doctest: python -m doctest 121_best_time_to_buy_and_sell_stock.py -v
 
 
-def maxProfit(prices: List[int]) -> int:
+def maxProfit(prices: list[int]) -> int:
     """
     Given an array of prices, maximize profit by buying lowest priced stock 
     and selling the stock when the price is the highest.
@@ -20,21 +20,23 @@ def maxProfit(prices: List[int]) -> int:
     :return: int
 
     >>> maxProfit([7,1,5,3,6,4])
-    True
-    >>> maxProfit("race a car")
-    False
+    5
+    >>> maxProfit([7,6,4,3,1])
+    0
     """
     left, right = 0, 1
-    difference = 0
+    maxDifference = 0
 
-    while prices[1] < len(prices):
-        if prices[1] - prices[0] < 0:
+    while right < len(prices):
+        if prices[right] - prices[left] < 0:
             left = right
             right += 1
         else:
-            difference = prices[1] - prices[0]
+            profit = prices[right] - prices[left]
+            maxDifference = max(maxDifference, profit)
             right += 1
+    return maxDifference
 
-
+print(maxProfit([7,1,5,3,6,4]))
 
 
