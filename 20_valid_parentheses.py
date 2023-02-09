@@ -53,9 +53,8 @@ Thought process:
 -Iterate through each character in the string
 -Use a list to keep track of open characters put into it
 -If a close bracket is encountered, the corresponding open bracket must be 'popped' off from the list
--After then end of the string iteration, check if the list is empty
-    -If list is empty, then return true (string is valid)
-    -If list is not empty, then return false (string is not valid)
+-If the close bracket's corresponding open bracket is not at the end of the brackets list, return false (string is not valid)
+-After the end of the string iteration, return true (string is valid)
 -This process ensures ordering is correct
 '''
 def isValid_withOrdering(input_string: str) -> bool:
@@ -73,6 +72,12 @@ def isValid_withOrdering(input_string: str) -> bool:
     False
     >>> isValid_withOrdering("([)]")
     False
+    >>> isValid_withOrdering("((")
+    False
+    >>> isValid_withOrdering("[")
+    False
+    >>> isValid_withOrdering("]")
+    False
     """
     brackets_list = []
     open_brackets = ['(', '[', '{']
@@ -82,13 +87,24 @@ def isValid_withOrdering(input_string: str) -> bool:
       if character in open_brackets:
         brackets_list.append(character)
       else:
-        if character == closed_brackets[open_brackets.index(character)]:
-          brackets_list.pop(character)
-        else:
+        if len(brackets_list) == 0:
           return False
-    return True
+        else: 
+          # need closed_brackets index of character
+          closed_brackets_index_of_character = closed_brackets.index(character)  # 0
+          # get open bracket character using above index
+          corresponding_open_bracket = open_brackets[closed_brackets_index_of_character]  # (
+          if brackets_list[-1] != corresponding_open_bracket:
+            return False
+          else:
+            brackets_list.pop()
+    
+    if len(brackets_list) == 0:
+      return True
+    else:
+      return False
 
 
 if __name__ == "__main__":
   # isValid("()")
-  isValid_withOrdering("{}]")
+  isValid_withOrdering("([)]")
