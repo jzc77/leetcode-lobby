@@ -45,7 +45,7 @@ def isValid(input_string: str) -> bool:
         bracket_3 += 1
       if character == "}":
         bracket_3 -= 1
-    return bracket_1 + bracket_2 + bracket_3 == 0
+    return bracket_1 == bracket_2 == bracket_3 == 0
 
 
 if __name__ == "__main__":
