@@ -29,6 +29,24 @@ def isValid(input_string: str) -> bool:
     >>> isValid("(]")
     False
     """
+    bracket_1 = 0   # ()
+    bracket_2 = 0   # []
+    bracket_3 = 0   # {}
+    for character in input_string:
+      if character == "(":
+        bracket_1 += 1
+      if character == ")":
+        bracket_1 -= 1
+      if character == "[":
+        bracket_2 += 1
+      if character == "]":
+        bracket_2 -= 1
+      if character == "{":
+        bracket_3 += 1
+      if character == "}":
+        bracket_3 -= 1
+    return bracket_1 + bracket_2 + bracket_3 == 0
+
 
 if __name__ == "__main__":
   isValid("()")
