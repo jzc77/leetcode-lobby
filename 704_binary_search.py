@@ -27,13 +27,14 @@ def search(nums: list[int], target: int) -> int:
     -1
     """
     left, right = 0, len(nums) - 1  # 0, 5
-    list_middle = math.floor((left + right) / 2)  # 2
     
-    while list_middle > 0:
-      if list_middle == target:
+    
+    while left <= right:
+      list_middle = math.floor((left + right) / 2)  # 2
+      if nums[list_middle] == target:
         return list_middle
       else:
-        if list_middle < target:
+        if nums[list_middle] < target:
           left = list_middle + 1  # Need to move left pointer to right half of original list
         else:
           right = list_middle - 1 # Need to move right pointer to left half of original list
