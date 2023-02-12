@@ -15,22 +15,35 @@ Thought process:
 '''
 # To run file: python 206_reverse_linked_list.py
 # To run doctest: python -m doctest 206_reverse_linked_list.py -v
-def reverseList(input_list: list) -> list:
+
+class ListNode:
+  def __init__(self, val=0, next=None):
+     self.val = val
+     self.next = next
+
+
+def reverseList_usingPointers(head: ListNode) -> ListNode:
     """
     Given the head of a singly linked list, reverse the list, and return the reversed list.
 
     :param: list
     :return: list
 
-    >>> reverseList([1,2,3,4,5])
+    >>> reverseList_usingPointers([1,2,3,4,5])
     [5,4,3,2,1]
-    >>> reverseList([1,2])
+    >>> reverseList_usingPointers([1,2])
     [2,1]
-    >>> reverseList([])
+    >>> reverseList_usingPointers([])
     []
     """
-    
+    prev, current = None, head
 
+    while current:
+      temp_next = current.next
+      current.next = prev
+      prev = current
+      current = temp_next
+    return prev
 
 if __name__ == "__main__":
-  reverseList([1,2,3,4,5])
+  reverseList_usingPointers([1,2,3,4,5])
