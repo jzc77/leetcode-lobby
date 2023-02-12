@@ -28,7 +28,6 @@ def search(nums: list[int], target: int) -> int:
     """
     left, right = 0, len(nums) - 1  # 0, 5
     
-    
     while left <= right:
       list_middle = math.floor((left + right) / 2)  # 2
       if nums[list_middle] == target:
@@ -40,9 +39,6 @@ def search(nums: list[int], target: int) -> int:
           right = list_middle - 1 # Need to move right pointer to left half of original list
 
     return -1 # Target not found in original list
-
-
-
 
 if __name__ == "__main__":
   search([-1,0,3,5,9,12], 9)
